@@ -6,7 +6,7 @@
 /*   By: alaziz <alaziz.student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 23:58:42 by alaziz            #+#    #+#             */
-/*   Updated: 2025/06/11 00:08:01 by alaziz           ###   LAUSANNE.ch       */
+/*   Updated: 2025/06/11 00:24:16 by alaziz           ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ int	main(void)
 	int	j;
 	int	k;
 
-	i = 1;
+	i = 21;
 	j = 'd';
 	k = '}';
-	printf("%d is_alnum = %d", i, ft_isalnum(i));
-	printf("%d is_alnum = %d", j, ft_isalnum(j));
-	printf("%d is_alnum = %d", k, ft_isalnum(k));
+	printf("%d is_alnum = %d\n", i, ft_isalnum(i));
+	printf("%d is_alnum = %d\n", j, ft_isalnum(j));
+	printf("%d is_alnum = %d\n", k, ft_isalnum(k));
 	return (0);
 }
