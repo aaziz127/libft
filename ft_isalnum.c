@@ -6,30 +6,28 @@
 /*   By: alaziz <alaziz.student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 23:58:42 by alaziz            #+#    #+#             */
-/*   Updated: 2025/06/11 09:22:19 by alaziz           ###   LAUSANNE.ch       */
+/*   Updated: 2025/06/11 21:13:31 by alaziz           ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+//Checks if character is alphanumeric
+// c	character to check
+//return		SUCCESS(1)
+//return		FAILURE(0)
 int	ft_isalnum(int c)
 {
-	return (((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) \
-			|| (c >= '0' && '9' >= c));
+	return (ft_isalpha(c) || ft_isdigit(c));
 }
 /*
-int	main(void)
+int	main(int argc, char *argv[])
 {
-	int	i;
-	int	j;
-	int	k;
-
-	i = '1';
-	j = 'd';
-	k = '}';
-	printf("%d is_alnum = %d\n", i, ft_isalnum(i));
-	printf("%d is_alnum = %d\n", j, ft_isalnum(j));
-	printf("%d is_alnum = %d\n", k, ft_isalnum(k));
-	return (0);
+	char	c = '*';
+	
+	if (argc == 2)
+		c = argv[argc - 1][0];
+	printf("isalnum(%c) => %i\n", c, isalnum(c));
+	printf("ft_isalnum(%c) => %i\n", c, ft_isalnum(c));
 }
 */
