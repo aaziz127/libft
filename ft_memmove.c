@@ -6,7 +6,7 @@
 /*   By: alaziz <alaziz.student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 14:48:54 by alaziz            #+#    #+#             */
-/*   Updated: 2025/06/11 23:27:06 by alaziz           ###   LAUSANNE.ch       */
+/*   Updated: 2025/06/12 00:22:38 by alaziz           ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void *my_memmove(void *dst, const void *src, size_t len) {
 int	main() {
     char str[] = "overlapping";
     ft_memmove(str + 5, str + 3, 6);
+    printf("%s\n", str);  // Output: overing
+	memmove(str + 5, str + 3, 6);
     printf("%s\n", str);  // Output: overing
     return 0;
 }
