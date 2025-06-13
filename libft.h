@@ -6,7 +6,7 @@
 /*   By: alaziz <alaziz.student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 11:12:38 by alaziz            #+#    #+#             */
-/*   Updated: 2025/06/12 14:38:02 by alaziz           ###   LAUSANNE.ch       */
+/*   Updated: 2025/06/13 14:01:16 by alaziz           ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <string.h>
+# include <bsd/string.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <stddef.h> // Pour le type NULL

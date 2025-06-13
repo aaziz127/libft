@@ -6,12 +6,13 @@
 /*   By: alaziz <alaziz.student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 13:44:42 by alaziz            #+#    #+#             */
-/*   Updated: 2025/06/12 14:37:38 by alaziz           ###   LAUSANNE.ch       */
+/*   Updated: 2025/06/13 11:15:04 by alaziz           ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+//return the first occurence of c int s.
 char	*ft_strchr(const char *s, int c)
 {
 	while (*s != '\0')
