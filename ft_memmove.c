@@ -6,7 +6,7 @@
 /*   By: alaziz <alaziz.student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 14:48:54 by alaziz            #+#    #+#             */
-/*   Updated: 2025/06/12 00:22:38 by alaziz           ###   LAUSANNE.ch       */
+/*   Updated: 2025/06/12 10:09:41 by alaziz           ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,37 +26,32 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	return (dst);
 }
 /*
-#include <stdio.h>
-#include <stddef.h>
+int main(int argc, char *argv[])
+{
+	char *dest = malloc(42);
+	char *src = NULL;
+	size_t n = 3;
+	
+	if (argc == 2)
+		src = argv[argc-1];
+	else if (argc == 3)
+	{
+		src = argv[argc-2];
+		n = atoi(argv[argc-1]);
+	}
+	else
+	{
+		printf("Usage: %s [src] [n]\n", argv[0]);
+		return (0);
+	}
 
-void *my_memmove(void *dst, const void *src, size_t len) {
-    unsigned char *d = dst;
-    const unsigned char *s = src;
+	// Tests
+	printf("src => '%s'	| n => %ld\n", src, n);
+	ft_memmove(dest, src, n);
+	printf("dest => '%s'\n", dest);
+	memmove(dest, src, n);
+	printf("dest => '%s'\n", dest);
 
-    if (!len) return dst;
-
-    if (d < s) {
-        size_t i = 0;
-        while (i < len) {
-            d[i] = s[i];
-            i++;
-        }
-    } else {
-        size_t i = len;
-        while (i > 0) {
-            d[i - 1] = s[i - 1];
-            i--;
-        }
-    }
-
-    return dst;
+	return (0);
 }
 */
-int	main() {
-    char str[] = "overlapping";
-    ft_memmove(str + 5, str + 3, 6);
-    printf("%s\n", str);  // Output: overing
-	memmove(str + 5, str + 3, 6);
-    printf("%s\n", str);  // Output: overing
-    return 0;
-}
