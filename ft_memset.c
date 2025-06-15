@@ -6,7 +6,7 @@
 /*   By: alaziz <alaziz.student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 10:14:18 by alaziz            #+#    #+#             */
-/*   Updated: 2025/06/11 21:25:46 by alaziz           ###   LAUSANNE.ch       */
+/*   Updated: 2025/06/15 20:44:04 by alaziz           ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,8 @@ void	*ft_memset(void *s, int c, size_t n)
 	unsigned char	*str;
 
 	str = (unsigned char *)s;
-	if (!s)
-		return (NULL);
-	while (n != 0)
-	{
+	while (n--)
 		*str++ = (unsigned char)c;
-		n--;
-	}
 	return (s);
 }
 /*
@@ -55,5 +50,15 @@ int	main(int argc, char *argv[])
 	printf("str pre-memset => %s	| c => %d	| n => %lu\n", str, c, n);
 	printf("ft_memset(str, c, n) => %p\n", ft_memset(str, c, n));
 	printf("str post-memset => %s	| c => %d	| n => %lu\n", str, c, n);
+}
+*/
+/*
+int main(void)
+{
+    char arr[10];
+    ft_memset(arr, 'A', 5);
+    arr[5] = '\0';  // Not needed here; memset doesn't null-terminate
+    printf("%s\n", arr);  // Output: AAAAA
+    return 0;
 }
 */

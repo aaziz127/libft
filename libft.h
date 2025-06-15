@@ -6,7 +6,7 @@
 /*   By: alaziz <alaziz.student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 11:12:38 by alaziz            #+#    #+#             */
-/*   Updated: 2025/06/13 14:01:16 by alaziz           ###   LAUSANNE.ch       */
+/*   Updated: 2025/06/15 17:49:30 by alaziz           ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 # include <unistd.h>
 # include <string.h>
-# include <bsd/string.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <stddef.h> // Pour le type NULL
+# include <ctype.h>
+# include <limits.h>
 
 typedef struct s_list
 {
