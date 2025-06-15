@@ -6,7 +6,7 @@
 /*   By: alaziz <alaziz.student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 17:49:40 by alaziz            #+#    #+#             */
-/*   Updated: 2025/06/15 19:45:02 by alaziz           ###   LAUSANNE.ch       */
+/*   Updated: 2025/06/15 22:06:47 by alaziz           ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	ft_atoi(const char *str)
 	}
 	return (result * sign);
 }
-
+/*
 int	main(void)
 {
 	printf("Test ft_atoi:\n");
@@ -87,6 +87,6 @@ int	main(void)
 	printf("atoi'   \t\n\r\v\f123' -> %d\n", atoi("   \t\n\r\v\f123"));
 	printf("ft_atoi'' -> %d\n", ft_atoi(""));
 	printf("atoi'' -> %d\n", atoi(""));
-	printf("atoi'' -> %d : %d\n", INT_MAX * 2 , (INT_MAX * 2) / 2);
 	return (0);
 }
+*/
