@@ -6,7 +6,7 @@
 /*   By: alaziz <alaziz.student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 10:24:02 by alaziz            #+#    #+#             */
-/*   Updated: 2025/06/16 11:45:56 by alaziz           ###   LAUSANNE.ch       */
+/*   Updated: 2025/06/17 17:47:59 by alaziz           ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,20 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*dest;
-	char	*destt;
-	size_t	len;
+	size_t	s1_len;
+	size_t	s2_len;
+	char	*result;
 
-	len = ft_strlen(s1) + ft_strlen(s2) + 1;
-	dest = malloc(len);
-	destt = dest;
-	if (!dest)
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	if (!s1 || !s2)
 		return (NULL);
-	while (*s1 != '\0')
-		*(dest++) = *(s1++);
-	while (*s2 != '\0')
-		*(dest++) = *(s2++);
-	*dest = '\0';
-	return (destt);
+	result = (char *)malloc(s1_len + s2_len + 1);
+	if (!result)
+		return (NULL);
+	ft_memcpy(result, s1, s1_len);
+	ft_memcpy(result + s1_len, s2, s2_len + 1);
+	return (result);
 }
 /*
 int	main(int argc, char *argv[])

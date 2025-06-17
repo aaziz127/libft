@@ -6,71 +6,60 @@
 /*   By: alaziz <alaziz.student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 10:23:47 by alaziz            #+#    #+#             */
-/*   Updated: 2025/06/12 11:52:36 by alaziz           ###   LAUSANNE.ch       */
+/*   Updated: 2025/06/17 14:57:36 by alaziz           ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <bsd/string.h>
-#include <stddef.h>
+
+static int	ft_min(int a, int b)
+{
+	if (a < b)
+		return (a);
+	return (b);
+}
 
 size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	size_t			dest_len;
-	size_t			src_len;
-	unsigned int	i;
+	size_t	dlen;
+	size_t	slen;
 
-	dest_len = ft_strlen(dest);
-	src_len = ft_strlen(src);
-	if (dest == NULL || src == NULL)
-		return (0);
-	if (size <= dest_len)
-		return (size + src_len);
-	i = 0;
-	while ((dest_len + i) < (size - 1) && src[i] != '\0')
-	{
-		dest[dest_len + i] = src[i];
-		i++;
-	}
-	dest[dest_len + i] = '\0';
-	return (dest_len + src_len);
+	dlen = ft_strlen(dest);
+	slen = ft_strlen(src);
+	if (dlen >= size)
+		return (dlen + ft_strlen(src));
+	ft_memcpy(&dest[dlen], src, ft_min(slen + 1, size - dlen));
+	if (slen > size - dlen - 1)
+		dest[size - 1] = '\0';
+	return (dlen + slen);
 }
 /*
-int	main(void)
+int main(int argc, char *argv[])
 {
-    char	buf[20];
-    size_t	result;
+    char *dest = NULL;
+    const char *src = "default";
+    size_t size = 15;
 
-    printf("=== TEST 1: Normal concatenation ===\n");
-    strcpy(buf, "Hello");
-    result = ft_strlcat(buf, " World", sizeof(buf));
-    printf("Result: '%s' (len: %zu)\n", buf, result);
-    printf("\n=== TEST 2: Exact fit ===\n");
-    strcpy(buf, "Hello");
-    result = ft_strlcat(buf, "!!!", 9);  // "Hello!!!" + null = 9 bytes
-    printf("Result: '%s' (len: %zu)\n", buf, result);
-    printf("\n=== TEST 3: Truncation ===\n");
-    strcpy(buf, "Hello");
-    result = ft_strlcat(buf, " World Wide Web", 12);
-    printf("Result: '%s' (len: %zu)\n", buf, result);
-    printf("Expected truncation to 'Hello Worl'\n");
-    printf("\n=== TEST 4: Empty destination ===\n");
-    buf[0] = '\0';
-    result = ft_strlcat(buf, "Welcome", sizeof(buf));
-    printf("Result: '%s' (len: %zu)\n", buf, result);
-    printf("\n=== TEST 5: Empty source ===\n");
-    strcpy(buf, "Hello");
-    result = ft_strlcat(buf, "", sizeof(buf));
-    printf("Result: '%s' (len: %zu)\n", buf, result);
-    printf("\n=== TEST 6: Zero size buffer ===\n");
-    strcpy(buf, "Hello");
-    result = ft_strlcat(buf, " World", 0);
-    printf("Result: '%s' (len: %zu)\n", buf, result);
-    printf("(Buffer should remain unchanged)\n");
-	char dest[15] = "ABC";
-	char src[] = "DEFGHIJKL";
-	printf("result:%s lenft_strlcat: %lu\n",dest, ft_strlcat(dest, src, 9));
-	
+    if (argc >= 2)
+        src = argv[1];
+    if (argc >= 3)
+        size = ft_atoi(argv[2]);
+
+    // Initialisation de dest avec "Hello"
+    dest = ft_strdup("Hello");
+    if (!dest)
+    {
+        fprintf("Error: malloc failed\n");
+        return (1);
+    }
+
+    printf("Test ft_strlcat(dest, \"%s\", %zu)\n", src, size);
+    printf("Before: dest = \"%s\"\n", dest);
+
+    size_t len = ft_strlcat(dest, src, size);
+    printf("After:  dest = \"%s\"\t\t| length = %zu\n", dest, len);
+
+    free(dest);
     return (0);
 }
 */

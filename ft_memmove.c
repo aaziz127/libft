@@ -6,7 +6,7 @@
 /*   By: alaziz <alaziz.student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 14:48:54 by alaziz            #+#    #+#             */
-/*   Updated: 2025/06/12 10:09:41 by alaziz           ###   LAUSANNE.ch       */
+/*   Updated: 2025/06/17 14:53:20 by alaziz           ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,44 +14,39 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	char	*dst;
-	char	*ssrc;
-	char	*temp;
+	char		*d;
+	const char	*s;
 
-	ssrc = (char *)src;
-	dst = (char *)dest;
-	temp = ssrc;
-	ft_memcpy(temp, ssrc, n);
-	ft_memcpy(dst, temp, n);
-	return (dst);
-}
-/*
-int main(int argc, char *argv[])
-{
-	char *dest = malloc(42);
-	char *src = NULL;
-	size_t n = 3;
-	
-	if (argc == 2)
-		src = argv[argc-1];
-	else if (argc == 3)
-	{
-		src = argv[argc-2];
-		n = atoi(argv[argc-1]);
-	}
+	d = dest;
+	s = src;
+	if (!dest || !src)
+		return (dest);
+	if (d <= s || d >= s + n)
+		ft_memcpy(d, s, n);
 	else
 	{
-		printf("Usage: %s [src] [n]\n", argv[0]);
-		return (0);
+		while (n--)
+			d[n] = s[n];
 	}
+	return (dest);
+}
+/*
+int	main(void)
+{
+	char	 str[] = "0123456789";
+	char	 test1[20] = "ABCDEFGHIJKL";
+    char	test2[20] = "ABCDEFGHIJKL";
+	char	*s = ft_strdup(str);
+	char	*t = ft_strdup(test1);
+	char	*t2 = ft_strdup(test2);
 
-	// Tests
-	printf("src => '%s'	| n => %ld\n", src, n);
-	ft_memmove(dest, src, n);
-	printf("dest => '%s'\n", dest);
-	memmove(dest, src, n);
-	printf("dest => '%s'\n", dest);
+    ft_memmove(str + 5, str, 5);
+	ft_memmove(test1 + 12, test1, 5);
+    ft_memmove(test2 + 7, test2 + 1, 5);
+    printf("str:%s : fter ft_memmove: %s\n", s, str);
+	printf("test1:%s :after ft_memmove: %s\n",t, test1);
+    printf("test2:%s :after ft_memmove   : %s\n", t2, test2);
 
-	return (0);
+    return 0;
 }
 */

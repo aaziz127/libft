@@ -6,13 +6,11 @@
 /*   By: alaziz <alaziz.student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 09:33:57 by alaziz            #+#    #+#             */
-/*   Updated: 2025/06/12 10:20:27 by alaziz           ###   LAUSANNE.ch       */
+/*   Updated: 2025/06/17 14:56:44 by alaziz           ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <bsd/string.h>
-
 /*
 * The strlcpy() function copies up to size - 1 characters 
 * from the NUL-terminated string src to dst,
@@ -20,47 +18,61 @@
 * return:For strlcpy() that means the length of src.
 */
 
+static int	ft_min(int a, int b)
+{
+	if (a < b)
+		return (a);
+	return (b);
+}
+
 size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	unsigned int	i;
+	size_t	len;
 
-	i = 0;
-	if (size)
+	len = ft_strlen(src);
+	if (size > 0)
 	{
-		while (i < (size - 1) && src[i])
-		{
-			dest[i] = src[i];
-			i++;
-		}
-		dest[i] = '\0';
+		ft_memcpy(dest, src, ft_min(len + 1, size));
+		dest[ft_min(len, size - 1)] = '\0';
 	}
-	return (ft_strlen(src));
+	return (len);
 }
 /*
 int	main(int argc, char *argv[])
 {
-	char	*dest = malloc(42);
-	char	*src = NULL;
-	size_t	size = 3;
-	
-	if (argc == 2)
-		src = argv[argc - 1];
-	else if (argc == 3)
-	{
-		src = argv[argc - 2];
-		size = atoi(argv[argc - 1]);
-	}
-	else
-	{
-		printf("Usage: %s [src] [size]\n", argv[0]);
-		return (0);
-	}
-	printf("ft_strlcpy(dest, '%s', %ld)\n", src, size);
-	printf("dest => '%s'\t\t| length => %ld\n", dest,\
-	ft_strlcpy(dest, src, size));
-	printf("\nstrlcpy(dest, '%s', %ld)\n", src, size);
-	printf("dest => '%s'\t\t| length => %ld\n", dest,\
-	strlcpy(dest, src, size));
-	return (0);
+    char	*dest = NULL;
+    const	char *src = "default";
+    size_t	size = 10;
+
+    if (argc >= 2)
+        src = argv[1];
+    if (argc >= 3)
+        size = atoi(argv[2]);
+
+    dest = calloc(size + 1, sizeof(char));
+    if (!dest)
+    {
+        fprintf(stderr, "Error: malloc failed\n");
+        return (1);
+    }
+
+    printf("Test ft_strlcpy(dest, \"%s\", %zu)\n", src, size);
+    printf("Before: dest = \"%s\"\n", dest);
+    size_t ft_len = ft_strlcpy(dest, src, size);
+    printf("After:  dest = \"%s\"\t\t| length = %zu\n", dest, ft_len);
+
+    // Test with custom strlcpy for comparison
+    char *dest2 = calloc(size + 1, sizeof(char));
+    if (dest2)
+    {
+        printf("Test my_strlcpy(dest2, \"%s\", %zu)\n", src, size);
+        printf("Before: dest2 = \"%s\"\n", dest2);
+        size_t ref_len = strlcpy(dest2, src, size);
+        printf("After:  dest2 = \"%s\"\t\t| length = %zu\n", dest2, ref_len);
+        free(dest2);
+    }
+
+    free(dest);
+    return (0);
 }
 */

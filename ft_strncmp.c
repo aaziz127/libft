@@ -6,7 +6,7 @@
 /*   By: alaziz <alaziz.student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 09:48:01 by alaziz            #+#    #+#             */
-/*   Updated: 2025/06/13 12:14:50 by alaziz           ###   LAUSANNE.ch       */
+/*   Updated: 2025/06/17 14:52:59 by alaziz           ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 
 	first = (unsigned char *)s1;
 	second = (unsigned char *)s2;
-	while (n-- != 0 && *(first++) != '\0' && *(second++) != '\0')
+	while (n-- > 0 && *first != '\0' && *second != '\0')
 	{
 		if (*first != *second)
 			return (*first - *second);
+		first++;
+		second++;
 	}
-	return (0);
+	return (*first - *second);
 }
 /*
 int	main(int argc, char *argv[])
@@ -42,7 +44,7 @@ int	main(int argc, char *argv[])
 		res = ft_strncmp(argv[1], argv[2], atoi(argv[3]));
 	if (res == 0)
 	{
-		printf("<str1> and <str2> are equal");
+		printf("<%s> and <%s> are equal", argv[1], argv[2]);
 		if (argc > 3)
 			printf(" in the first %d bytes\n", atoi(argv[3]));
 		printf("\n");
@@ -51,11 +53,11 @@ int	main(int argc, char *argv[])
 	{
 		if (res < 0)
 		{
-			printf("<str1> is less than <str2> (%d)\n", res);
+			printf("<%s> is less than <%s> (%d)\n", argv[1], argv[2], res);
 		}
 		else
 		{
-			printf("<str1> is greater than <str2> (%d)\n", res);
+			printf("<%s> is greater than <%s> (%d)\n", argv[1], argv[2], res);
 		}
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: alaziz <alaziz.student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 19:55:20 by alaziz            #+#    #+#             */
-/*   Updated: 2025/06/15 21:37:27 by alaziz           ###   LAUSANNE.ch       */
+/*   Updated: 2025/06/17 13:30:33 by alaziz           ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,11 @@ char	*ft_strdup(const char *s)
 	char	*dup;
 	size_t	len;
 
-	len = 0;
-	while (s[len])
-		len++;
-	dup = malloc(len + 1);
+	len = ft_strlen(s) + 1;
+	dup = malloc(len);
 	if (!dup)
 		return (NULL);
-	ft_memset(dup, 0, len + 1);
-	ft_memcpy(dup, s, len);
-	return (dup);
+	return ((char *)ft_memcpy(dup, s, len));
 }
 /*
 int	main(void)
