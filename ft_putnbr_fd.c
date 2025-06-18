@@ -6,7 +6,7 @@
 /*   By: alaziz <alaziz.student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 21:25:30 by alaziz            #+#    #+#             */
-/*   Updated: 2025/06/17 21:53:44 by alaziz           ###   LAUSANNE.ch       */
+/*   Updated: 2025/06/18 17:51:04 by alaziz           ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int main(void)
     ft_putchar_fd('\n', STDOUT_FILENO);
 
     // Test ft_putendl_fd
-    ft_putendl_fd("Ceci est une ligne.", STDOUT_FILENO); // Affiche "Ceci est une ligne.\n"
+    ft_putendl_fd("Ceci est une ligne.", STDOUT_FILENO);
 
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: alaziz <alaziz.student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 11:28:08 by alaziz            #+#    #+#             */
-/*   Updated: 2025/06/16 16:39:46 by alaziz           ###   LAUSANNE.ch       */
+/*   Updated: 2025/06/18 13:49:44 by alaziz           ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	trimend(char const *s, char const *set, size_t *start, size_t *end)
 		*end = *start;
 	else
 	{
-		*end = strlen(s) - 1;
+		*end = ft_strlen(s) - 1;
 		while (*end > *start && set[(unsigned char)s[*end]])
 			(*end)--;
 	}
@@ -40,7 +40,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	if (!s1 || !set)
 		return ((char *)s1);
-	memset(inset, 0, sizeof(inset));
+	ft_memset(inset, 0, sizeof(inset));
 	while (*set)
 		inset[(unsigned char)*set++] = 1;
 	start = 0;
@@ -51,8 +51,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	trimmed = malloc(end - start + 2);
 	if (!trimmed)
 		return (NULL);
-	ft_memcpy(trimmed, s1 + start, end - start + 1);
-	trimmed[end - start + 1] = '\0';
+	ft_strlcpy(trimmed, s1 + start, end - start + 2);
 	return (trimmed);
 }
 /*
