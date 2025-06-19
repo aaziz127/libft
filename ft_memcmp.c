@@ -6,7 +6,7 @@
 /*   By: alaziz <alaziz.student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 11:45:32 by alaziz            #+#    #+#             */
-/*   Updated: 2025/06/13 12:50:55 by alaziz           ###   LAUSANNE.ch       */
+/*   Updated: 2025/06/19 16:06:56 by alaziz           ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,24 @@
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	const char	*first;
-	const char	*second;
+	size_t				i;
+	const unsigned char	*first;
+	const unsigned char	*second;
 
-	first = (const char *)s1;
-	second = (const char *)s2;
-	return (ft_strncmp(first, second, n));
+	first = (const unsigned char *)s1;
+	second = (const unsigned char *)s2;
+	if (n == 0)
+		return (0);
+	i = 0;
+	while (i < n)
+	{
+		if (*first != *second)
+			return (*first - *second);
+		first++;
+		second++;
+		i++;
+	}
+	return (0);
 }
 /*
 int	main(int argc, char *argv[])

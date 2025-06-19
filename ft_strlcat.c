@@ -6,31 +6,29 @@
 /*   By: alaziz <alaziz.student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 10:23:47 by alaziz            #+#    #+#             */
-/*   Updated: 2025/06/17 14:57:36 by alaziz           ###   LAUSANNE.ch       */
+/*   Updated: 2025/06/19 16:43:56 by alaziz           ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_min(int a, int b)
-{
-	if (a < b)
-		return (a);
-	return (b);
-}
-
 size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
 	size_t	dlen;
 	size_t	slen;
+	size_t	i;
 
 	dlen = ft_strlen(dest);
 	slen = ft_strlen(src);
 	if (dlen >= size)
-		return (dlen + ft_strlen(src));
-	ft_memcpy(&dest[dlen], src, ft_min(slen + 1, size - dlen));
-	if (slen > size - dlen - 1)
-		dest[size - 1] = '\0';
+		return (dlen + slen);
+	i = 0;
+	while (src[i] && (dlen + i < size - 1))
+	{
+		dest[dlen + i] = src[i];
+		i++;
+	}
+	dest[dlen + i] = '\0';
 	return (dlen + slen);
 }
 /*

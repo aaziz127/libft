@@ -6,7 +6,7 @@
 /*   By: alaziz <alaziz.student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 22:31:06 by alaziz            #+#    #+#             */
-/*   Updated: 2025/06/12 22:59:43 by alaziz           ###   LAUSANNE.ch       */
+/*   Updated: 2025/06/19 16:20:34 by alaziz           ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,37 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	size_t	i;
+	const char		*lastoccur;
+	unsigned char	uc;
 
-	i = 0;
-	while (*(s++) != '\0')
-		i++;
-	i += 1;
-	while (i >= 0)
+	uc = (unsigned char)c;
+	lastoccur = NULL;
+	while (*s)
 	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s--;
-		i--;
+		if ((unsigned char)*s == uc)
+			lastoccur = s;
+		s++;
 	}
-	return (NULL);
+	if (uc == '\0')
+		return ((char *)s);
+	return ((char *)lastoccur);
 }
 /*
 int	main(void)
 {
-	char	*str = "hello world in 42!";
-	char	tofind = '4';
-	char	*find;
+    char s[] = "tripouille";
+    char s2[] = "ltripouiel";
+    char s3[] = "";
 
-	find = ft_strrchr(str, tofind);
-	if (find != NULL)
-		printf("%c: found at index: %ld in:\'%s\'\n", tofind, (find - str), str);
-	else
-		printf("%c: not found in:\'%s\'",tofind, str);
-	return (0);
+    printf("Test 1: %p\n", ft_strrchr(s, 't') == s); // OK
+    printf("Test 2: %p\n", ft_strrchr(s, 'l') == s + 8); // OK
+    printf("Test 3: %p\n", ft_strrchr(s2, 'l') == s2 + 9); // OK
+    printf("Test 4: %p\n", ft_strrchr(s, 'z') == NULL); // OK
+    printf("Test 5: %p\n", ft_strrchr(s, 0) == s + strlen(s)); // OK
+    printf("Test 6: %p\n", ft_strrchr(s, 't' + 256) == s); // OK
+    char *empty = calloc(1, 1);
+    printf("Test 7: %p\n", ft_strrchr(empty, 'V') == NULL); // OK
+    free(empty);
+    printf("Test 8: %p\n", ft_strrchr(s3, 0) == s3); // OK
 }
 */

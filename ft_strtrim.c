@@ -6,7 +6,7 @@
 /*   By: alaziz <alaziz.student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 11:28:08 by alaziz            #+#    #+#             */
-/*   Updated: 2025/06/18 13:49:44 by alaziz           ###   LAUSANNE.ch       */
+/*   Updated: 2025/06/19 14:56:41 by alaziz           ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void	trimstart(char const *s, char const *set, size_t *start)
 {
-	*start = 0;
 	while (s[*start] && set[(unsigned char)s[*start]])
 		(*start)++;
 }
@@ -22,7 +21,7 @@ static void	trimstart(char const *s, char const *set, size_t *start)
 static void	trimend(char const *s, char const *set, size_t *start, size_t *end)
 {
 	if (!(s[*start]))
-		*end = *start;
+		*end = *start - 1;
 	else
 	{
 		*end = ft_strlen(s) - 1;

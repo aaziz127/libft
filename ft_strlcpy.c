@@ -6,7 +6,7 @@
 /*   By: alaziz <alaziz.student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 09:33:57 by alaziz            #+#    #+#             */
-/*   Updated: 2025/06/17 14:56:44 by alaziz           ###   LAUSANNE.ch       */
+/*   Updated: 2025/06/19 16:36:25 by alaziz           ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,24 @@
 * return:For strlcpy() that means the length of src.
 */
 
-static int	ft_min(int a, int b)
-{
-	if (a < b)
-		return (a);
-	return (b);
-}
-
 size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	size_t	len;
+	size_t	src_len;
+	size_t	i;
 
-	len = ft_strlen(src);
-	if (size > 0)
+	src_len = 0;
+	while (src[src_len])
+		src_len++;
+	if (size == 0)
+		return (src_len);
+	i = 0;
+	while (i < size - 1 && src[i])
 	{
-		ft_memcpy(dest, src, ft_min(len + 1, size));
-		dest[ft_min(len, size - 1)] = '\0';
+		dest[i] = src[i];
+		i++;
 	}
-	return (len);
+	dest[i] = '\0';
+	return (src_len);
 }
 /*
 int	main(int argc, char *argv[])
