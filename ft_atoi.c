@@ -6,7 +6,7 @@
 /*   By: alaziz <alaziz.student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 17:49:40 by alaziz            #+#    #+#             */
-/*   Updated: 2025/06/15 22:06:47 by alaziz           ###   LAUSANNE.ch       */
+/*   Updated: 2025/06/22 22:58:18 by alaziz           ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,7 @@
 
 static int	ft_isspace(int c)
 {
-	char	*spaces;
-
-	spaces = " \t\n\v\f\r";
-	while (*spaces != '\0')
-	{
-		if (*spaces == c)
-			return (1);
-		spaces++;
-	}
-	return (0);
+	return (c == ' ' || (c >= '\t' && c <= '\r'));
 }
 
 static int	get_sign(const char **str)
@@ -42,8 +33,8 @@ static int	get_sign(const char **str)
 
 int	ft_atoi(const char *str)
 {
-	int	result;
-	int	sign;
+	long	result;
+	int		sign;
 
 	result = 0;
 	while (ft_isspace(*str))
@@ -51,17 +42,14 @@ int	ft_atoi(const char *str)
 	sign = get_sign(&str);
 	while (isdigit(*str))
 	{
-		if (result > (INT_MAX - (*str - '0')) / 10)
-		{
-			if (sign == 1)
-				return (INT_MAX);
-			else
-				return (INT_MIN);
-		}
+		if (sign == 1 && result > (LONG_MAX - (*str - '0')) / 10)
+			return (INT_MAX);
+		if (sign == -1 && (-result) < (LONG_MIN + (*str - '0')) / 10)
+			return (INT_MIN);
 		result = result * 10 + (*str - '0');
 		str++;
 	}
-	return (result * sign);
+	return ((int)(result * sign));
 }
 /*
 int	main(void)

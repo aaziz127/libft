@@ -6,7 +6,7 @@
 /*   By: alaziz <alaziz.student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 10:52:50 by alaziz            #+#    #+#             */
-/*   Updated: 2025/06/11 21:04:06 by alaziz           ###   LAUSANNE.ch       */
+/*   Updated: 2025/06/21 10:38:11 by alaziz           ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@
 //n	Number of bytes to be set to 0
 void	ft_bzero(void *s, size_t n)
 {
-	ft_memset(s, '\0', n);
+	unsigned char	*p;
+
+	p = s;
+	while (n--)
+		*p++ = 0;
 }
 /*
 int	main(int argc, char *argv[])

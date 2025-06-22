@@ -6,7 +6,7 @@
 /*   By: alaziz <alaziz.student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 10:58:22 by alaziz            #+#    #+#             */
-/*   Updated: 2025/06/17 11:50:08 by alaziz           ###   LAUSANNE.ch       */
+/*   Updated: 2025/06/21 10:24:15 by alaziz           ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	char		*d;
-	const char	*s;
+	unsigned char		*d;
+	const unsigned char	*s;
 
-	d = (char *)dest;
-	s = (const char *)src;
-	while (n-- > 0)
+	if (!dest && !src)
+		return (dest);
+	d = dest;
+	s = src;
+	while (n--)
 		*d++ = *s++;
 	return (dest);
 }

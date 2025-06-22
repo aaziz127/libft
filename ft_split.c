@@ -6,16 +6,16 @@
 /*   By: alaziz <alaziz.student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 18:18:19 by alaziz            #+#    #+#             */
-/*   Updated: 2025/06/18 17:50:20 by alaziz           ###   LAUSANNE.ch       */
+/*   Updated: 2025/06/20 00:33:56 by alaziz           ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	count_words(char const *s, char c)
+static size_t	count_words(char const *s, char c)
 {
-	int	count;
-	int	i;
+	size_t	count;
+	size_t	i;
 
 	count = 0;
 	i = 0;
@@ -28,17 +28,20 @@ static int	count_words(char const *s, char c)
 	return (count);
 }
 
-static char	**free_mem(char **result, int i)
+static char	**free_mem(char **result, size_t count)
 {
-	while (i > 0)
-		free(result[--i]);
+	size_t	i;
+
+	i = 0;
+	while (i < count)
+		free(result[i++]);
 	free(result);
 	return (NULL);
 }
 
-static char	*extract_word(char const *s, char c, int *start)
+static char	*extract_word(char const *s, char c, size_t *start)
 {
-	int		len;
+	size_t	len;
 	char	*word;
 
 	len = 0;
@@ -47,6 +50,8 @@ static char	*extract_word(char const *s, char c, int *start)
 	while (s[*start + len] && s[*start + len] != c)
 		len++;
 	word = ft_substr(s, *start, len);
+	if (!word)
+		return (NULL);
 	*start += len;
 	return (word);
 }
@@ -54,27 +59,26 @@ static char	*extract_word(char const *s, char c, int *start)
 char	**ft_split(char const *s, char c)
 {
 	char	**result;
-	char	**current;
-	int		word_count;
-	int		start;
+	size_t	word_count;
+	size_t	start;
+	size_t	i;
 
+	start = 0;
+	i = 0;
 	if (!s)
 		return (NULL);
 	word_count = count_words(s, c);
 	result = malloc((word_count + 1) * sizeof(char *));
 	if (!result)
 		return (NULL);
-	current = result;
-	start = 0;
-	while (word_count > 0)
+	while (i < word_count)
 	{
-		*current = extract_word(s, c, &start);
-		if (!*current)
-			return (free_mem(result, current - result));
-		current++;
-		word_count--;
+		result[i] = extract_word(s, c, &start);
+		if (!result[i])
+			return (free_mem(result, i));
+		i++;
 	}
-	*current = NULL;
+	result[i] = NULL;
 	return (result);
 }
 /*

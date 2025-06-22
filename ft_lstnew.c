@@ -6,7 +6,7 @@
 /*   By: alaziz <alaziz.student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 09:50:30 by alaziz            #+#    #+#             */
-/*   Updated: 2025/06/19 10:45:14 by alaziz           ###   LAUSANNE.ch       */
+/*   Updated: 2025/06/20 01:23:45 by alaziz           ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_list	*ft_lstnew(void *content)
 	node ->next = NULL;
 	return (node);
 }
-
+/*
 int	main(void)
 {
 	char	*s;
@@ -48,3 +48,4 @@ int	main(void)
 	free(node2);
 	return (0);
 }
+*/

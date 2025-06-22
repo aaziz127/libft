@@ -6,7 +6,7 @@
 /*   By: alaziz <alaziz.student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 19:45:43 by alaziz            #+#    #+#             */
-/*   Updated: 2025/06/15 21:36:58 by alaziz           ###   LAUSANNE.ch       */
+/*   Updated: 2025/06/22 21:37:22 by alaziz           ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	void	*ptr;
 	size_t	total;
 
-	if (nmemb == 0 || size == 0)
-		return (malloc(1));
-	total = nmemb * size;
-	if (total / size != nmemb)
+	if (size && nmemb > (SIZE_MAX / size))
 		return (NULL);
+	total = nmemb * size;
+	if (total == 0)
+		total = 1;
 	ptr = malloc(total);
 	if (!ptr)
 		return (NULL);

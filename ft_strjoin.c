@@ -6,7 +6,7 @@
 /*   By: alaziz <alaziz.student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 10:24:02 by alaziz            #+#    #+#             */
-/*   Updated: 2025/06/17 17:47:59 by alaziz           ###   LAUSANNE.ch       */
+/*   Updated: 2025/06/22 20:56:13 by alaziz           ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,21 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	s1_len;
 	size_t	s2_len;
 	char	*result;
+	char	*dst;
 
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
 	if (!s1 || !s2)
 		return (NULL);
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
 	result = (char *)malloc(s1_len + s2_len + 1);
 	if (!result)
 		return (NULL);
-	ft_memcpy(result, s1, s1_len);
-	ft_memcpy(result + s1_len, s2, s2_len + 1);
+	dst = result;
+	while (*s1)
+		*dst++ = *s1++;
+	while (*s2)
+		*dst++ = *s2++;
+	*dst = '\0';
 	return (result);
 }
 /*
