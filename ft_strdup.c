@@ -6,7 +6,7 @@
 /*   By: alaziz <alaziz.student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 19:55:20 by alaziz            #+#    #+#             */
-/*   Updated: 2025/06/21 12:38:49 by alaziz           ###   LAUSANNE.ch       */
+/*   Updated: 2025/06/23 14:15:02 by alaziz           ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ char	*ft_strdup(const char *s)
 	char	*buff;
 	size_t	len;
 
-	if (!s)
-		return (NULL);
 	len = ft_strlen(s);
 	buff = malloc(len * sizeof(char) + 1);
 	if (!buff)

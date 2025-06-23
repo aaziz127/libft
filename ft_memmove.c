@@ -6,7 +6,7 @@
 /*   By: alaziz <alaziz.student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 14:48:54 by alaziz            #+#    #+#             */
-/*   Updated: 2025/06/17 14:53:20 by alaziz           ###   LAUSANNE.ch       */
+/*   Updated: 2025/06/23 14:15:30 by alaziz           ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 
 	d = dest;
 	s = src;
-	if (!dest || !src)
-		return (dest);
 	if (d <= s || d >= s + n)
 		ft_memcpy(d, s, n);
 	else

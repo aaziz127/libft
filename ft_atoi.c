@@ -6,7 +6,7 @@
 /*   By: alaziz <alaziz.student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 17:49:40 by alaziz            #+#    #+#             */
-/*   Updated: 2025/06/22 22:58:18 by alaziz           ###   LAUSANNE.ch       */
+/*   Updated: 2025/06/23 15:01:51 by alaziz           ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_atoi(const char *str)
 	while (ft_isspace(*str))
 		str++;
 	sign = get_sign(&str);
-	while (isdigit(*str))
+	while (ft_isdigit(*str))
 	{
 		if (sign == 1 && result > (LONG_MAX - (*str - '0')) / 10)
 			return (INT_MAX);
